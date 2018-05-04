@@ -11,6 +11,15 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UsersController extends BaseController
 {
+
+  public function searchUsers(Request $request){
+    if(isset($request->name)){
+      return User::where('name','LIKE','%'.$request->name.'%')->get();
+    } else {
+      return 'No se ha indicado nombre de usuario';
+    }
+  }
+
     public function searchMembers($city){
       return User::where('city', $city)->where('type',1)->get();
     }

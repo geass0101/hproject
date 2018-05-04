@@ -30,6 +30,8 @@ $api->version('v1', function ($api) {
         $api->get('friends','RelationsController@getFriends');
         $api->post('friends','RelationsController@addFriend');
 
+        //Search
+        $api->post('search','UsersController@searchUsers');
 
         $api->group( [ 'middleware' => ['jwt.auth'] ], function ($api) {
             $api->get('jokes', 'JokesController@index');

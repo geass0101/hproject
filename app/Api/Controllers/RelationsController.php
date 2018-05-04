@@ -12,7 +12,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class RelationsController extends BaseController
 {
   public function addFriend(Request $request){
-    $client = new \GuzzleHttp\Client();
     $user1=JWTAuth::parseToken()->authenticate()->id;
     $user2= $request->userdes;
 
@@ -32,7 +31,6 @@ class RelationsController extends BaseController
   }
 
   public function getFriends(Request $request){
-    $client = new \GuzzleHttp\Client();
     $user=JWTAuth::parseToken()->authenticate()->id;
     $rels=Relation::where('ori',$user)->orWhere('des',$user)->get();
     $friends=[];
