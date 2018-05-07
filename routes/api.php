@@ -33,6 +33,10 @@ $api->version('v1', function ($api) {
         //Search
         $api->post('search','UsersController@searchUsers');
 
+        //Posts
+        $api->get('posts','PostsController@getPosts');
+        $api->post('create','PostsController@createPost');
+
         $api->group( [ 'middleware' => ['jwt.auth'] ], function ($api) {
             $api->get('jokes', 'JokesController@index');
             $api->get('authenticate/user', ['as' => 'auth.user', 'uses' => 'AuthenticateController@getAuthenticatedUser']);

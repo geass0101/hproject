@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
       $table->increments('id');
       $table->text('body');
       $table->integer('created_by')->unsigned();
-      $table->integer(); //1->Post 2->Evento
+      $table->integer('type'); //1->Post 2->Evento
       $table->timestamps();
     }
 
