@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-      $table->increments('id');
-      $table->text('body');
-      $table->integer('created_by')->unsigned();
-      $table->integer('type'); //1->Post 2->Evento
-      $table->timestamps();
+        $table->increments('id');
+        $table->text('idconversation');
+        $table->text('body');
+        $table->integer('ori');
+        $table->integer('des');
+        $table->timestamps();
     }
 
     /**
@@ -27,7 +28,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
-
+        Schema::dropIfExists('messages');
     }
 }
