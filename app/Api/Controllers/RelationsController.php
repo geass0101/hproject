@@ -26,7 +26,7 @@ class RelationsController extends BaseController
     $user1=JWTAuth::parseToken()->authenticate()->id;
     $user2=$request->userdes;
     $rel= Relation::where('ori',$user1)->where('des',$user2)->find();
-    
+
     $rel->status = 1;
     $rel->save();
   }
@@ -44,7 +44,7 @@ class RelationsController extends BaseController
   public function getFriends(Request $request){
     $user=JWTAuth::parseToken()->authenticate()->id;
 
-    $rels=Relation::where('ori',$user)->orWhere('des',$user)->get();
+    $rels=Relation::where('ori',$user)->orWhere('des',$user)->where('status',1)->get();
     $friends=[];
     for ($i=0; $i < count($rels) ; $i++) {
       if($rels[$i]->ori!=$user){
