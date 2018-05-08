@@ -25,9 +25,20 @@ class RelationsController extends BaseController
   public function confirmFriend(Request $request){
     $user1=JWTAuth::parseToken()->authenticate()->id;
     $user2=$request->userdes;
-    $rel= Relation::where('user1',$user1)->where('user2',$user2)->get()[0];
+    $rel= Relation::where('ori',$user1)->where('des',$user2)->find();
+    
     $rel->status = 1;
     $rel->save();
+  }
+
+  public function getRequests(Request $request){
+    $user2=JWTAuth::parseToken()->authenticate()->id;
+    $relations= Relation::where('des',$user2)->where('status',0)->get();
+    $req=[];
+    foreach ($relations as $rel) {
+      array_push($req,User::find($rel->ori));
+    }
+    return $req;
   }
 
   public function getFriends(Request $request){
@@ -48,7 +59,7 @@ class RelationsController extends BaseController
       $user=User::find($value);
       array_push($fr,$user);
     }
-  
+
     return $fr;
   }
 }

@@ -29,6 +29,8 @@ $api->version('v1', function ($api) {
         // Friends
         $api->get('friends','RelationsController@getFriends');
         $api->post('friends','RelationsController@addFriend');
+        $api->get('requests','RelationsController@getRequests');
+        $api->post('requests','RelationsController@confirmFriend');
 
         //Search
         $api->post('search','UsersController@searchUsers');
