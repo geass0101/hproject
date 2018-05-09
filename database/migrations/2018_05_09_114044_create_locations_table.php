@@ -25,6 +25,6 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('locations');
     }
 }

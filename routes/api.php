@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
 $api = app('Dingo\Api\Routing\Router');
 
@@ -23,26 +23,26 @@ $api->version('v1', function ($api) {
         $api->post('refresh-token', 'AuthenticateController@refreshToken');
 
         // UsersController
-        $api->get('profile','UsersController@fetchProfile');
-        $api->post('profile','UsersController@editProfile');
+        $api->get('profile', 'UsersController@fetchProfile');
+        $api->post('profile', 'UsersController@editProfile');
 
         // Friends
-        $api->get('friends','RelationsController@getFriends');
-        $api->post('friends','RelationsController@addFriend');
-        $api->get('requests','RelationsController@getRequests');
-        $api->post('requests','RelationsController@confirmFriend');
+        $api->get('friends', 'RelationsController@getFriends');
+        $api->post('friends', 'RelationsController@addFriend');
+        $api->get('requests', 'RelationsController@getRequests');
+        $api->post('requests', 'RelationsController@confirmFriend');
 
         //Search
-        $api->post('search','UsersController@searchUsers');
+        $api->post('search', 'UsersController@searchUsers');
 
         //Posts
-        $api->get('posts','PostsController@getPosts');
-        $api->post('create','PostsController@createPost');
+        $api->get('posts', 'PostsController@getPosts');
+        $api->post('create', 'PostsController@createPost');
 
         //Localization
-        $api->post('location','LocationsController@storeLocation');
+        $api->post('location', 'LocationsController@storeLocation');
 
-        $api->group( [ 'middleware' => ['jwt.auth'] ], function ($api) {
+        $api->group(['middleware' => ['jwt.auth']], function ($api) {
             $api->get('jokes', 'JokesController@index');
             $api->get('authenticate/user', ['as' => 'auth.user', 'uses' => 'AuthenticateController@getAuthenticatedUser']);
         });
