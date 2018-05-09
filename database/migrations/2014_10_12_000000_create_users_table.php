@@ -19,9 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email',100)->unique();
             $table->string('password');
             $table->integer('type')->default(1); //1=persona 2=grupo 3=empresa
-            $table->string('city');
-            $table->string('country');
-            $table->string('profile');
+            $table->string('city')->default('');
+            $table->string('country')->default('');
+            $table->string('profile')->default('');
+            $table->string('instrument')->default('');
+            $table->string('genre')->default('');
             $table->rememberToken();
             $table->timestamps();
         });

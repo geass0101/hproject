@@ -33,6 +33,11 @@ class UsersController extends BaseController
       return User::where('id',$id)->get();
     }
 
+    public function getProfile(Request $request){
+      $id=$request->id;
+      return User::where('id',$id)->get();
+    }
+
     public function editProfile(Request $request){
       $id=JWTAuth::parseToken()->authenticate()->id;
       $user=User::where('id',$id)->get()[0];
