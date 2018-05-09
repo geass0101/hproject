@@ -39,6 +39,9 @@ $api->version('v1', function ($api) {
         $api->get('posts','PostsController@getPosts');
         $api->post('create','PostsController@createPost');
 
+        //Localization
+        $api->post('location','LocationsController@storeLocation');
+
         $api->group( [ 'middleware' => ['jwt.auth'] ], function ($api) {
             $api->get('jokes', 'JokesController@index');
             $api->get('authenticate/user', ['as' => 'auth.user', 'uses' => 'AuthenticateController@getAuthenticatedUser']);
