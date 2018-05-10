@@ -19,6 +19,11 @@ class UsersController extends BaseController
       return 'No se ha indicado nombre de usuario';
     }
   }
+  public function geosearchUsers(Request $request){
+    $users=Location::where('lat',$request->lat)->where('long',$request->long)->user()->get();
+
+
+  }
 
     public function searchMembers($city){
       return User::where('city', $city)->where('type',1)->get();

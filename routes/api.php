@@ -34,6 +34,7 @@ $api->version('v1', function ($api) {
 
         //Search
         $api->post('search', 'UsersController@searchUsers');
+        $api->post('geosearch', 'UsersController@geosearchUsers');
 
         //Posts
         $api->get('posts', 'PostsController@getPosts');
