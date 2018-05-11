@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLocationsTable extends Migration
 {
@@ -13,9 +13,12 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        $table->increments('id');
-        $table->Double('lat');
-        $table->Double('long');
+        Schema::create('locations', function (Blueprint $table) {
+
+            $table->increments('id');
+            $table->Double('lat');
+            $table->Double('long');
+        });
     }
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMessagesTable extends Migration
 {
@@ -13,12 +13,14 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        $table->increments('id');
-        $table->text('idconversation');
-        $table->text('body');
-        $table->integer('ori');
-        $table->integer('des');
-        $table->timestamps();
+        Schema::create('messages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('idconversation');
+            $table->text('body');
+            $table->integer('ori');
+            $table->integer('des');
+            $table->timestamps();
+        });
     }
 
     /**
